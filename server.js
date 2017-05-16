@@ -19,9 +19,9 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
   console.log('A user has joined. His ID is: ' + socket.id)
-  socket.emit('event', {message:'A user has joined'});
+  io.emit('event', {message:'A user has joined'});
   socket.on('chatMsg', function(msg){
-    socket.emit('chatMsg', msg);
+    io.emit('chatMsg', msg);
     console.log('Message: ' + msg);
   })
 })
